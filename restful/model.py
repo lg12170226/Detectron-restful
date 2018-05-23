@@ -26,11 +26,11 @@ class Model():
         self.thresh = 0.3
         merge_cfg_from_file(cfg_path)
         self.model = infer_engine.initialize_model_from_cfg(weights_path,self.gpu_id)
-        self.dummy_coco_dataset = dummy_datasets.get_illbuild_class11_dataset()
+        self.dummy_coco_dataset = dummy_datasets.get_steal_oil_class8_dataset()
         print ("model is ok")
 
     def predict(self,im):
-        out_json = {"data".encode('utf-8'):[]}
+        out_json = {"data":[]}
         
         with c2_utils.NamedCudaScope(self.gpu_id):
             cls_boxes, cls_segms, cls_keyps = infer_engine.im_detect_all(self.model, im, None, None
@@ -40,7 +40,7 @@ class Model():
         if isinstance(cls_boxes, list):
             boxes, segms, keypoints, classes = self.convert_from_cls_format(cls_boxes, cls_segms, cls_keyps)
         if boxes is None or boxes.shape[0] == 0 or max(boxes[:, 4]) < self.thresh:
-            return
+            return json.dumps(out_json)
         #get score
         areas = (boxes[:, 2] - boxes[:, 0]) * (boxes[:, 3] - boxes[:, 1])
         sorted_inds = np.argsort(-areas)
