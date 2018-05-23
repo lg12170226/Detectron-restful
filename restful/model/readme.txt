@@ -1,3 +1,5 @@
+此步骤已在dockerfile中实现，此处忽略
+
 下载模型以及配置文件
 
 链接地址 https://pan.baidu.com/s/1bemobrSsswKZhH2_V_FYBw
