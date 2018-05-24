@@ -29,10 +29,16 @@ RUN make ops
 # Go to Detectron root
 WORKDIR /detectron
 
+# install flask
 RUN pip install --upgrade pip
 RUN pip install Flask
 
+# install vim
+RUN mv /var/lib/apt/lists /var/lib/apt/lists.bad
+RUN apt-get update
+RUN apt-get install vim
 
+# start restful service
 WORKDIR /detectron/restful
 CMD python app.py
 EXPOSE 8080
