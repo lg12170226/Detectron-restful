@@ -26,7 +26,7 @@ class Model():
         self.thresh = 0.3
         merge_cfg_from_file(cfg_path)
         self.model = infer_engine.initialize_model_from_cfg(weights_path,self.gpu_id)
-        self.dummy_coco_dataset = dummy_datasets.get_steal_oil_class8_dataset()
+        self.dummy_coco_dataset = dummy_datasets.get_steal_oil_class10_dataset()
         print ("model is ok")
 
     def predict(self,im):
