@@ -56,7 +56,7 @@ class Model():
             class_str = self.get_class_string(classes[i], score, self.dummy_coco_dataset)
             #class_str_list.append(class_str)
             
-            single_data = {"class":class_str,"score":float('%.2f' % score),"box":{"xmin":int(bbox[0]),"ymin":int(bbox[1]),"xmax":int(bbox[2]),"ymax":int(bbox[3])}}
+            single_data = {"cls":class_str,"score":float('%.2f' % score),"box":{"xmin":int(bbox[0]),"ymin":int(bbox[1]),"xmax":int(bbox[2]),"ymax":int(bbox[3])}}
             data_list.append(single_data)
         #construcrion - json
         out_json["data"] = data_list
