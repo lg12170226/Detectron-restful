@@ -29,7 +29,12 @@ def info():
     #imagepath = request.form.getlist('data')
     #imagepath = request.form.get("data",type=str,default=None)
     js = request.get_json()
-    imagepath = js.get('data',None)
+    #js is not dict return []
+    if isinstance(js,dict) and js.has_key('data') :
+        imagepath = js.get('data',None)
+    else:
+        out_json = {"data":[]}
+        return json.dumps(out_json)
     if (imagepath.startswith("https://") or imagepath.startswith("http://") or imagepath.startswith("file://")):
         imagefile = urllib.urlopen(imagepath)
         status=imagefile.code
