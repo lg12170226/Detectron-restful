@@ -57,7 +57,7 @@ def info():
             return json.dumps(out_json)
         else:
             img_np = misc.imread(imagepath)
-    return	mm.predict(img_np)
+    return mm.predict(img_np)
     
     
     
