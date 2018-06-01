@@ -1,7 +1,5 @@
 #coding=utf-8
 
-
-
 import numpy as np
 import cv2 
 import json
@@ -17,7 +15,6 @@ c2_utils.import_detectron_ops()
 # OpenCL may be enabled by default in OpenCV3; disable it because it's not
 # thread safe and causes unwanted GPU memory allocations.
 cv2.ocl.setUseOpenCL(False)
-
 
 class Model():
     
@@ -46,6 +43,10 @@ class Model():
         sorted_inds = np.argsort(-areas)
         #class_str_list = []
         data_list = []
+        
+        #no nms between classes
+        '''im1 = cv2.cvtColor(im,cv2.COLOR_RGB2BGR)
+        result1= im1.copy()
         for i in sorted_inds:
             
             bbox = boxes[i, :4]
@@ -53,11 +54,42 @@ class Model():
             if score < self.thresh:
                 continue
             #get class-str
-            class_str = self.get_class_string(classes[i], score, self.dummy_coco_dataset)
-            #class_str_list.append(class_str)
+            class_str = self.get_class_string(classes[i], score, self.dummy_coco_dataset)            
+            cv2.rectangle(result1,(int(bbox[0]),int(bbox[1])),(int(bbox[2]),int(bbox[3])),(255,255,0),1)
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            ((txt_w, txt_h), _) = cv2.getTextSize(class_str, font, 0.35, 1)            
+            txt_tl = int(bbox[0]), int(bbox[1]) - int(0.3 * txt_h)
+            cv2.putText(result1, class_str, txt_tl, font, 0.35, (218, 227, 218), lineType=cv2.LINE_AA)
+            txt_tl = int(bbox[0])+txt_w, int(bbox[1]) - int(0.3 * txt_h)
+            cv2.putText(result1, ('%.2f' % score), txt_tl, font, 0.35, (218, 227, 218), lineType=cv2.LINE_AA)
+        cv2.imwrite("test1.jpg", result1)'''
+        
+        #nms between classes
+        #im2 = cv2.cvtColor(im,cv2.COLOR_RGB2BGR)
+        #result2= im2.copy()        
+        if (len(sorted_inds) > 0):        
+            nmsIndex = self.nms_between_classes(boxes, 0.9)  #阈值为0.9，阈值越大，过滤的越少 
+            for i in xrange(len(nmsIndex)):                
+                bbox = boxes[nmsIndex[i], :4]
+                score = boxes[nmsIndex[i], -1]
+                if score < self.thresh:
+                    continue
+                #get class-str
+                class_str = self.get_class_string(classes[nmsIndex[i]], score, self.dummy_coco_dataset)
+                #class_str_list.append(class_str)            
             
-            single_data = {"cls":class_str,"score":float('%.2f' % score),"box":{"xmin":int(bbox[0]),"ymin":int(bbox[1]),"xmax":int(bbox[2]),"ymax":int(bbox[3])}}
-            data_list.append(single_data)
+                single_data = {"cls":class_str,"score":float('%.2f' % score),"box":{"xmin":int(bbox[0]),"ymin":int(bbox[1]),"xmax":int(bbox[2]),"ymax":int(bbox[3])}}
+                data_list.append(single_data)        
+        
+                '''cv2.rectangle(result2,(int(bbox[0]),int(bbox[1])),(int(bbox[2]),int(bbox[3])),(255,255,0),1)
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                ((txt_w, txt_h), _) = cv2.getTextSize(class_str, font, 0.55, 1)            
+                txt_tl = int(bbox[0]), int(bbox[1]) - int(0.3 * txt_h)
+                cv2.putText(result2, class_str, txt_tl, font, 0.55, (218, 227, 218), lineType=cv2.LINE_AA)
+                txt_tl = int(bbox[0])+txt_w, int(bbox[1]) - int(0.3 * txt_h)
+                cv2.putText(result2, ('%.2f' % score), txt_tl, font, 0.35, (218, 227, 218), lineType=cv2.LINE_AA)'''
+        #cv2.imwrite("test2.jpg", result2)
+        
         #construcrion - json
         out_json["data"] = data_list
         
@@ -90,4 +122,33 @@ class Model():
             'id{:d}'.format(class_index)
         #return class_text + ' {:0.2f}'.format(score).lstrip('0')
         return class_text
+    def nms_between_classes(self,boxes, threshold):
+        if boxes.size==0:
+            return np.empty((0,3))
+        x1 = boxes[:,0]
+        y1 = boxes[:,1]
+        x2 = boxes[:,2]
+        y2 = boxes[:,3]
+        s = boxes[:,4]
+        area = (x2-x1+1) * (y2-y1+1)
+        I = np.argsort(s)
+        pick = np.zeros_like(s, dtype=np.int16)
+        counter = 0
+        while I.size>0:
+            i = I[-1]
+            pick[counter] = i
+            counter += 1
+            idx = I[0:-1]
+            xx1 = np.maximum(x1[i], x1[idx])
+            yy1 = np.maximum(y1[i], y1[idx])
+            xx2 = np.minimum(x2[i], x2[idx])
+            yy2 = np.minimum(y2[i], y2[idx])
+            w = np.maximum(0.0, xx2-xx1+1)
+            h = np.maximum(0.0, yy2-yy1+1)
+            inter = w * h        
+            o = inter / (area[i] + area[idx] - inter)
+            I = I[np.where(o<=threshold)]
+        pick = pick[0:counter]  #返回nms后的索引
+        return pick
+    
     
