@@ -68,7 +68,7 @@ def initialize_gpu_from_weights_file(model, weights_file, gpu_id=0):
     # Initialize weights on GPU gpu_id only
     unscoped_param_names = OrderedDict()  # Print these out in model order
     for blob in model.params:
-        '''
+        
         unscoped_param_names[c2_utils.UnscopeName(str(blob))] = True
         ''' 
         keyname = c2_utils.UnscopeName(str(blob))
@@ -76,7 +76,7 @@ def initialize_gpu_from_weights_file(model, weights_file, gpu_id=0):
         #if (keyname == 'retnet_cls_pred_fpn3_w' or keyname == 'retnet_cls_pred_fpn3_b'):
             continue
         unscoped_param_names[keyname] = True
-        
+        '''
 
 
     with c2_utils.NamedCudaScope(gpu_id):
