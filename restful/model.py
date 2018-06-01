@@ -78,7 +78,7 @@ class Model():
                 class_str = self.get_class_string(classes[nmsIndex[i]], score, self.dummy_coco_dataset)
                 #class_str_list.append(class_str)            
             
-                single_data = {"cls":class_str,"score":float('%.2f' % score),"box":{"xmin":int(bbox[0]),"ymin":int(bbox[1]),"xmax":int(bbox[2]),"ymax":int(bbox[3])}}
+                single_data = {"cls":class_str,"score":float('%.2f' % score),"bbox":{"xmin":int(bbox[0]),"ymin":int(bbox[1]),"xmax":int(bbox[2]),"ymax":int(bbox[3])}}
                 data_list.append(single_data)        
         
                 '''cv2.rectangle(result2,(int(bbox[0]),int(bbox[1])),(int(bbox[2]),int(bbox[3])),(255,255,0),1)
