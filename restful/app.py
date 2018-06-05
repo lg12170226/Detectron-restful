@@ -1,4 +1,7 @@
 #coding=utf-8
+import logging
+from logging.handlers import RotatingFileHandler
+
 from flask import Flask
 from model import Model
 from flask import request,Response
@@ -25,15 +28,25 @@ mm = Model(cfg_path,weights_path)
 
 @app.route('/user', methods=['POST'])
 def info():
-
+    #app.logger.warning('A warning occurred (%d apples)', 42)
+    #app.logger.error('An error occurred')                     #private log
+    #logging.info('Info')                                      #root log
+    
+    
     #imagepath = request.form.getlist('data')
     #imagepath = request.form.get("data",type=str,default=None)
     js = request.get_json()
+    
+    #return json init
+    out_json = {"data":[]}
+    
     #js is not dict return []
     if isinstance(js,dict) and js.has_key('data') :
         imagepath = js.get('data',None)
+        info_str = 'images path:' + imagepath
+        logger.info(info_str)
     else:
-        out_json = {"data":[]}
+        logger.warning('post has not data or data-key!!!')
         return json.dumps(out_json)
     if (imagepath.startswith("https://") or imagepath.startswith("http://") or imagepath.startswith("file://")):
         imagefile = urllib.urlopen(imagepath)
@@ -48,23 +61,40 @@ def info():
                 code.write(image_data)
             img_np = misc.imread(new_imagepath)
         else:
-            out_json = {"data":[]}
+            logger.warning('the image is not download on internet!!!')
             return json.dumps(out_json)
     # path 
     else:
         if not os.path.exists(imagepath):
-            out_json = {"data":[]}
+            logger.warning('the image is not exists!!!')
             return json.dumps(out_json)
         else:
             img_np = misc.imread(imagepath)
-    return mm.predict(img_np)
-    
+            
+   
+    predict_datalist = mm.predict(img_np)
+    if len(predict_datalist) > 0:
+        logger.info('the images predict completed!!!')
+        out_json["data"] = predict_datalist
+    else:
+        logger.warning('the images has not right bbox!!!')
+    return json.dumps(out_json)
     
     
 if __name__ == '__main__':
+
+    if not os.path.exists('./log'):
+        os.makedirs('./log')
     
-    app.run(host="0.0.0.0",port=8080,debug=False)
+    logger = logging.getLogger('')    #set root level , default is WRAINING
+    logger.setLevel(logging.DEBUG)
     
-    
-#,threaded=True
+    formatter = logging.Formatter(
+        "[%(asctime)s] {%(pathname)s - %(module)s - %(funcName)s:%(lineno)d} - %(message)s")
+    handler = RotatingFileHandler('./log/oilsteal.log', maxBytes=100000, backupCount=10)
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)     #ok  start root log
+    #app.logger.addHandler(handler)  #ok  start private log
+    app.run(host="0.0.0.0",port=8080,debug=False)   #threaded=True
+
     
