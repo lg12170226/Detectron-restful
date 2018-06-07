@@ -18,9 +18,25 @@ cv2.ocl.setUseOpenCL(False)
 class Model():
     
     def __init__(self,cfg_path,weights_path):
+    
+        #nms_same_class 0.3  ----  *.yaml/TEST:NMS:0.3 中设置 defalut 0.5
+        
         self.gpu_id = 0               #gpu_id default 0
-        self.score_thresh = 0.3       #score > score_thresh   
-        self.class_nms_thresh = 0.9   #nms_between_classes  IOU > class_nms_thresh
+        
+        self.score_thresh = 0.4       #score > score_thresh  default 0.3  
+        
+        self.per_class_thresh = False         #score > class_score_thresh
+        self.autotruck_score_thresh = 0.6
+        self.forklift_score_thresh = 0.65
+        self.digger_score_thresh = 0.65
+        self.car_score_thresh = 0.45
+        self.bus_score_thresh = 0.0
+        self.tanker_score_thresh = 0.55
+        self.person_score_thresh = 0.35
+        self.minitruck_score_thresh = 0.0
+        self.minibus_score_thresh = 0.59
+        
+        self.class_nms_thresh = 0.85   #nms_between_classes  IOU > class_nms_thresh    default 0.9 
         merge_cfg_from_file(cfg_path)
         self.model = infer_engine.initialize_model_from_cfg(weights_path,self.gpu_id)
         self.dummy_coco_dataset = dummy_datasets.get_steal_oil_class10_dataset()
@@ -77,8 +93,28 @@ class Model():
                     continue
                 #get class-str
                 class_str = self.get_class_string(classes[nmsIndex[i]], score, self.dummy_coco_dataset)
-                #class_str_list.append(class_str)            
-            
+                
+                #score thresd per class
+                if self.per_class_thresh:
+                    if 'autotruck' == class_str and score < self.autotruck_score_thresh:
+                        continue
+                    if 'forklift'  == class_str and score < self.forklift_score_thresh:
+                        continue
+                    if 'digger'    == class_str and score < self.digger_score_thresh:
+                        continue
+                    if 'car'       == class_str and score < self.car_score_thresh:
+                        continue
+                    if 'bus'       == class_str and score < self.bus_score_thresh:
+                        continue
+                    if 'tanker'    == class_str and score < self.tanker_score_thresh:
+                        continue
+                    if 'person'    == class_str and score < self.person_score_thresh:
+                        continue
+                    if 'minitruck' == class_str and score < self.minitruck_score_thresh:
+                        continue
+                    if 'minibus'   == class_str and score < self.minibus_score_thresh:
+                        continue
+                
                 single_data = {"cls":class_str,"score":float('%.2f' % score),"bbox":{"xmin":int(bbox[0]),"ymin":int(bbox[1]),"xmax":int(bbox[2]),"ymax":int(bbox[3])}}
                 data_list.append(single_data)        
         
