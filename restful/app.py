@@ -77,6 +77,12 @@ def info():
     predict_datalist = mm.predict(img_np)
     if len(predict_datalist) > 0:
         logger.info('the images predict completed!!!')
+        res_log = []
+        for i in range(len(predict_datalist)):
+            single_data = {}
+            single_data = predict_datalist[i]
+            res_log.append(single_data['cls'])
+        logger.info(res_log)
         out_json["data"] = predict_datalist
     else:
         logger.warning('the images has not right bbox!!!')
