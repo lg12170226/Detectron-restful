@@ -99,7 +99,7 @@ if __name__ == '__main__':
     
     formatter = logging.Formatter(
         "[%(asctime)s] {%(pathname)s - %(module)s - %(funcName)s:%(lineno)d} - %(message)s")
-    handler = RotatingFileHandler('./log/oilsteal.log', maxBytes=100000, backupCount=10)
+    handler = RotatingFileHandler('./log/oilsteal.log', maxBytes=10000000, backupCount=10)
     handler.setFormatter(formatter)
     logger.addHandler(handler)     #ok  start root log
     #app.logger.addHandler(handler)  #ok  start private log
