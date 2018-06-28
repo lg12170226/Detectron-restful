@@ -41,6 +41,7 @@ def info():
     out_json = {"data":[]}
     
     #js is not dict return []
+    info_str = ''
     if isinstance(js,dict) and js.has_key('data') :
         imagepath = js.get('data',None)
         info_str = 'images path:' + imagepath
@@ -78,6 +79,7 @@ def info():
     if len(predict_datalist) > 0:
         logger.info('the images predict completed!!!')
         res_log = []
+        res_log.append(info_str)
         for i in range(len(predict_datalist)):
             single_data = {}
             single_data = predict_datalist[i]
