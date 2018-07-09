@@ -62,6 +62,9 @@ def info():
                 code.write(image_data)
             #img_np = misc.imread(new_imagepath)
             img_np = cv2.imread(new_imagepath)  #read image by cv2 ,the same as /tool/test_net.py
+            if img_np is None:
+                logger.warning('the images is NONE!!!')
+                return json.dumps(out_json)
         else:
             logger.warning('the image is not download on internet!!!')
             return json.dumps(out_json)
@@ -73,7 +76,9 @@ def info():
         else:
             #img_np = misc.imread(imagepath)
             img_np = cv2.imread(imagepath)  #read image by cv2 ,the same as /tool/test_net.py
-            
+            if img_np is None:
+                logger.warning('the images is NONE!!!')
+                return json.dumps(out_json)
    
     predict_datalist = mm.predict(img_np)
     if len(predict_datalist) > 0:
