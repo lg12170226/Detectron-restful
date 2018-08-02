@@ -1,0 +1,106 @@
+[2018-08-02 08:00:51,562] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:00:51,562] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:00:53,077] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:00:53,078] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:01:00,183] {app.py - app - predict:132} - the images has not right bbox!!!
+[2018-08-02 08:01:00,333] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:00] "POST /upload HTTP/1.1" 200 -
+[2018-08-02 08:01:00,875] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:00] "GET /upload HTTP/1.1" 200 -
+[2018-08-02 08:01:05,619] {app.py - app - predict:132} - the images has not right bbox!!!
+[2018-08-02 08:01:05,773] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:05] "POST /upload HTTP/1.1" 200 -
+[2018-08-02 08:01:21,843] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:21] "GET /upload HTTP/1.1" 200 -
+[2018-08-02 08:01:34,192] {app.py - app - predict:122} - the images predict completed!!!
+[2018-08-02 08:01:34,198] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:34] "POST /upload HTTP/1.1" 500 -
+[2018-08-02 08:01:34,240] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:34] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+[2018-08-02 08:01:34,240] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:34] "GET /upload?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+[2018-08-02 08:01:34,241] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:34] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+[2018-08-02 08:01:34,276] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:34] "GET /upload?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+[2018-08-02 08:01:34,303] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:34] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[2018-08-02 08:01:34,325] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:01:34] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+[2018-08-02 08:02:30,175] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Detected change in '/opt/ligang/Detectron-master/restful/app.py', reloading
+[2018-08-02 08:02:30,551] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:02:32,397] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:02:32,398] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:02:41,605] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:02:41,605] {app.py - app - predict:130} - ['', u'minitruck', u'car', u'car', u'car']
+[2018-08-02 08:02:41,671] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:02:41] "POST /upload HTTP/1.1" 200 -
+[2018-08-02 08:02:55,963] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:02:55,964] {app.py - app - predict:130} - ['', u'minitruck', u'car', u'car', u'car']
+[2018-08-02 08:02:56,005] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:02:56] "POST /upload HTTP/1.1" 200 -
+[2018-08-02 08:02:57,484] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:02:57] "GET /upload HTTP/1.1" 200 -
+[2018-08-02 08:03:04,365] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:03:04] "GET /upload HTTP/1.1" 200 -
+[2018-08-02 08:03:09,534] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:03:09,534] {app.py - app - predict:130} - ['', u'car', u'minitruck']
+[2018-08-02 08:03:09,569] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:03:09] "POST /upload HTTP/1.1" 200 -
+[2018-08-02 08:04:02,663] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:04:02,664] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:04:04,380] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:04:04,381] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:04:04,679] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:04:04] "GET /upload HTTP/1.1" 200 -
+[2018-08-02 08:04:40,233] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Detected change in '/opt/ligang/Detectron-master/restful/app.py', reloading
+[2018-08-02 08:04:40,528] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:10:06,703] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:10:06,704] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:10:08,678] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:10:08,679] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:10:12,360] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:10:12] "GET /upload HTTP/1.1" 404 -
+[2018-08-02 08:10:13,850] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:10:13] "GET /upload HTTP/1.1" 404 -
+[2018-08-02 08:10:19,148] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:10:19] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:12:33,639] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:12:33,640] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:12:35,218] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:12:35,219] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:12:42,201] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:12:42] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:12:47,832] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:12:47,832] {app.py - app - predict:130} - ['', u'autotruck', u'car', u'car', u'minibus', u'car', u'car', u'car']
+[2018-08-02 08:12:47,874] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:12:47] "POST /predict HTTP/1.1" 200 -
+[2018-08-02 08:13:59,290] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:13:59] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:14:39,173] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:14:39,174] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:14:40,763] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:14:40,764] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:14:43,829] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:14:43] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:15:33,617] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:15:33,618] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:15:35,202] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:15:35,203] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:15:40,139] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:15:40] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:15:42,373] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:15:42] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:15:42,727] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:15:42] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:15:42,984] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:15:42] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:15:43,187] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:15:43] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:15:57,393] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:15:57,393] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:15:58,922] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:15:58,923] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:16:00,057] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:16:00] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:16:17,554] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2018-08-02 08:16:17,554] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Restarting with stat
+[2018-08-02 08:16:19,080] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger is active!
+[2018-08-02 08:16:19,080] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} -  * Debugger PIN: 330-246-552
+[2018-08-02 08:16:20,262] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:16:20] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:16:22,152] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:16:22] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:16:22,353] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:16:22] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:16:22,539] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:16:22] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:16:31,021] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:16:31,021] {app.py - app - predict:130} - ['', u'minibus', u'car', u'autotruck', u'minibus']
+[2018-08-02 08:16:31,059] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:16:31] "POST /predict HTTP/1.1" 200 -
+[2018-08-02 08:16:55,967] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:16:55] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:17:04,282] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:17:04,283] {app.py - app - predict:130} - ['', u'car', u'minitruck', u'autotruck', u'minibus']
+[2018-08-02 08:17:04,324] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:17:04] "POST /predict HTTP/1.1" 200 -
+[2018-08-02 08:17:04,394] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.37 - - [02/Aug/2018 08:17:04] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:17:04,505] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.37 - - [02/Aug/2018 08:17:04] "GET /favicon.ico HTTP/1.1" 404 -
+[2018-08-02 08:17:16,655] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:17:16] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:17:39,139] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:17:39,140] {app.py - app - predict:130} - ['', u'minitruck']
+[2018-08-02 08:17:39,143] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.37 - - [02/Aug/2018 08:17:39] "POST /predict HTTP/1.1" 200 -
+[2018-08-02 08:17:39,817] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.37 - - [02/Aug/2018 08:17:39] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:17:53,969] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.37 - - [02/Aug/2018 08:17:53] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:19:07,193] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:19:07,193] {app.py - app - predict:130} - ['', u'autotruck', u'car', u'minitruck']
+[2018-08-02 08:19:07,234] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:19:07] "POST /predict HTTP/1.1" 200 -
+[2018-08-02 08:19:17,180] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.37 - - [02/Aug/2018 08:19:17] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:19:28,463] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:19:28] "GET /predict HTTP/1.1" 200 -
+[2018-08-02 08:19:35,673] {app.py - app - predict:123} - the images predict completed!!!
+[2018-08-02 08:19:35,673] {app.py - app - predict:130} - ['', u'bus', u'autotruck', u'minibus', u'autotruck', u'minibus']
+[2018-08-02 08:19:35,715] {/usr/local/lib/python2.7/dist-packages/werkzeug/_internal.py - _internal - _log:88} - 192.168.200.51 - - [02/Aug/2018 08:19:35] "POST /predict HTTP/1.1" 200 -
