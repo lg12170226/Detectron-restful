@@ -21,6 +21,10 @@ import urllib,urllib2
 import cv2
 import os
 from model import Model
+
+from bson.objectid import ObjectId
+
+
 app = Flask(__name__)
 cfg_path = './model/retinanet.yaml'
 weights_path = './model/model.pkl'
@@ -34,6 +38,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['PREDICT_FOLDER'] = PREDICT_FOLDER
 basedir = os.path.abspath(os.path.dirname(__file__))
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'JPG', 'PNG', 'gif', 'GIF'])
+
+PREDICTED_IMAGE = ''
 #ALLOWED_EXTENSIONS = set(['jpg'])
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
@@ -76,11 +82,16 @@ def api_upload():
         plot(imagespath,out_json,out_imagespath)
         #show
         #return jsonify({"success": 0, "msg": "上传成功"})
-        image_data = open(os.path.join(predict_file_dir, '%s' % new_filename), "rb").read()
-        response = make_response(image_data)
-        response.headers['Content-Type'] = 'image/png'
-        return response
-        #return
+        ############
+        #image_data = open(os.path.join(predict_file_dir, '%s' % new_filename), "rb").read()
+        #response = make_response(image_data)
+        #response.headers['Content-Type'] = 'image/png'
+        #return response
+        ################
+        global PREDICTED_IMAGE
+        PREDICTED_IMAGE = new_filename
+        return render_template('index.html')
+        ################
     else:
         return jsonify({"error": 1001, "msg": "上传失败"})
  
@@ -107,7 +118,18 @@ def show_photo(filename):
     else:
         pass
         
+# show photo
+@app.route('/predict/', methods=['GET'])
+def show_predict_photo():
+    #<string:filename>  af961ebd197c45d68ff414b9cbaccafa_180627030112.jpg 
+    filename = PREDICTED_IMAGE
+    print filename
+    image_data = open(os.path.join('predict', filename), "rb").read()
+    response = make_response(image_data)
+    response.headers['Content-Type'] = 'image/png'
+    return response
 
+        
  
 def predict(imagepath):
     out_json = {"data":[]}
