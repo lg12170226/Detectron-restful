@@ -190,10 +190,10 @@ class Xml():
     def __init__(self):
         self.INDENT= ' '*4
         self.NEW_LINE= '\n'
-        self.FOLDER_NODE= 'COCO2014'
+        self.FOLDER_NODE= 'VOC2010'
         self.ROOT_NODE= 'annotation'
-        self.DATABASE_NAME= 'LOGODection'
-        self.ANNOTATION= 'COCO2014'
+        self.DATABASE_NAME= 'VOC2010'
+        self.ANNOTATION= 'PASCALVOC2010'
         self.AUTHOR= 'HHJ'
         self.SEGMENTED= '0'
         self.DIFFICULT= '0'
