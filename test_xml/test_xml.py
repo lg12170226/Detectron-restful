@@ -1,9 +1,6 @@
 #coding=utf-8
 #__author__ = 'lg 2018-8-9'
 
-
-#coding=utf-8
-
 import cv2
 import os
 import xml.dom
@@ -68,27 +65,6 @@ class Model():
         #get score
         areas = (boxes[:, 2] - boxes[:, 0]) * (boxes[:, 3] - boxes[:, 1])
         sorted_inds = np.argsort(-areas)
-        
-        
-        #no nms between classes
-        '''im1 = cv2.cvtColor(im,cv2.COLOR_RGB2BGR)
-        result1= im1.copy()
-        for i in sorted_inds:
-            
-            bbox = boxes[i, :4]
-            score = boxes[i, -1]
-            if score < self.score_thresh:
-                continue
-            #get class-str
-            class_str = self.get_class_string(classes[i], score, self.dummy_coco_dataset)            
-            cv2.rectangle(result1,(int(bbox[0]),int(bbox[1])),(int(bbox[2]),int(bbox[3])),(255,255,0),1)
-            font = cv2.FONT_HERSHEY_SIMPLEX
-            ((txt_w, txt_h), _) = cv2.getTextSize(class_str, font, 0.35, 1)            
-            txt_tl = int(bbox[0]), int(bbox[1]) - int(0.3 * txt_h)
-            cv2.putText(result1, class_str, txt_tl, font, 0.35, (218, 227, 218), lineType=cv2.LINE_AA)
-            txt_tl = int(bbox[0])+txt_w, int(bbox[1]) - int(0.3 * txt_h)
-            cv2.putText(result1, ('%.2f' % score), txt_tl, font, 0.35, (218, 227, 218), lineType=cv2.LINE_AA)
-        cv2.imwrite("test1.jpg", result1)'''
         
         #nms between classes
         #im2 = cv2.cvtColor(im,cv2.COLOR_RGB2BGR)
@@ -326,8 +302,8 @@ def main(cfg_path,weights_path,input_imagespath,output_image,output_xmlpath):
                     #print (type(strscore))
                     print (strscore)
                     cv2.putText(img_np, strname + str(strscore) + '(' + str(xmax - xmin) + ',' + str(ymax - ymin) + ')', (xmin,ymin-10), font, 1,(0,0,255),2)
-                    print(os.path.join(output_image,file))
-                    cv2.imwrite(os.path.join(output_image,file), img_np)
+                print(os.path.join(output_image,file))
+                cv2.imwrite(os.path.join(output_image,file), img_np)
     
     
 if __name__ == '__main__':
