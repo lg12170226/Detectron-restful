@@ -13,6 +13,7 @@ import urllib,urllib2
 
 import cv2
 import os
+import time
 #import core.infer_simple_test as infer_test
 #from infer_simple_test import Model
 from model import Model
@@ -35,8 +36,8 @@ def info():
     
     #imagepath = request.form.getlist('data')
     #imagepath = request.form.get("data",type=str,default=None)
+    start_time = time.time()
     js = request.get_json()
-    
     #return json init
     out_json = {"data":[]}
     
@@ -48,6 +49,8 @@ def info():
         logger.info(info_str)
     else:
         logger.warning('post has not data or data-key!!!')
+        end_time = time.time() - start_time
+        logger.info('predict time:{}'.format(end_time))
         return json.dumps(out_json)
     if (imagepath.startswith("https://") or imagepath.startswith("http://") or imagepath.startswith("file://")):
         imagefile = urllib.urlopen(imagepath)
@@ -64,23 +67,36 @@ def info():
             img_np = cv2.imread(new_imagepath)  #read image by cv2 ,the same as /tool/test_net.py
             if img_np is None:
                 logger.warning('the images is NONE!!!')
+                end_time = time.time() - start_time
+                logger.info('predict time:{}'.format(end_time))
                 return json.dumps(out_json)
         else:
             logger.warning('the image is not download on internet!!!')
+            end_time = time.time() - start_time
+            logger.info('predict time:{}'.format(end_time))
             return json.dumps(out_json)
     # path 
     else:
         if not os.path.exists(imagepath):
             logger.warning('the image is not exists!!!')
+            end_time = time.time() - start_time
+            logger.info('predict time:{}'.format(end_time))
             return json.dumps(out_json)
         else:
             #img_np = misc.imread(imagepath)
+            start_readimage_time = time.time()
             img_np = cv2.imread(imagepath)  #read image by cv2 ,the same as /tool/test_net.py
+            end_readimage_time = time.time() - start_readimage_time
+            logger.info('readimage time:{}'.format(end_readimage_time))
             if img_np is None:
                 logger.warning('the images is NONE!!!')
+                end_time = time.time() - start_time
+                logger.info('predict time:{}'.format(end_time))
                 return json.dumps(out_json)
-   
+    start_model_time = time.time()
     predict_datalist = mm.predict(img_np)
+    end_model_time = time.time() - start_model_time
+    logger.info('model time:{}'.format(end_model_time))
     if len(predict_datalist) > 0:
         logger.info('the images predict completed!!!')
         res_log = []
@@ -93,6 +109,8 @@ def info():
         out_json["data"] = predict_datalist
     else:
         logger.warning('the images has not right bbox!!!')
+    end_time = time.time() - start_time
+    logger.info('predict time:{}'.format(end_time))
     return json.dumps(out_json)
     
     
