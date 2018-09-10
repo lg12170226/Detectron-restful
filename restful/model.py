@@ -39,7 +39,7 @@ class Model():
         self.class_nms_thresh = 0.85   #nms_between_classes  IOU > class_nms_thresh    default 0.9 
         merge_cfg_from_file(cfg_path)
         self.model = infer_engine.initialize_model_from_cfg(weights_path,self.gpu_id)
-        self.dummy_coco_dataset = dummy_datasets.get_steal_oil_class10_dataset()
+        self.dummy_coco_dataset = dummy_datasets.get_steal_oil_class14_dataset()
         print ("model is ok")
 
     def predict(self,im):
