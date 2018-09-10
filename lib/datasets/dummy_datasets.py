@@ -64,7 +64,7 @@ def get_steal_oil_class8_dataset():
     ]
     ds.classes = {i: name for i, name in enumerate(classes)}
     return ds
-    
+
 def get_steal_oil_class10_dataset():
     """A dummy COCO dataset that includes only the 'classes' field."""
     ds = AttrDict()
@@ -73,4 +73,12 @@ def get_steal_oil_class10_dataset():
     ]
     ds.classes = {i: name for i, name in enumerate(classes)}
     return ds
-# [{"supercategory": "none", "id": 1, "name": "autotruck"}, {"supercategory": "none", "id": 2, "name": "forklift"}, {"supercategory": "none", "id": 3, "name": "digger"}, {"supercategory": "none", "id": 4, "name": "car"}, {"supercategory": "none", "id": 5, "name": "bus"}, {"supercategory": "none", "id": 6, "name": "tanker"}, {"supercategory": "none", "id": 7, "name": "person"}]
+    
+def get_steal_oil_class14_dataset():
+    """A dummy COCO dataset that includes only the 'classes' field."""
+    ds = AttrDict()
+    classes = [
+        '__background__', 'suv', 'forklift', 'digger', 'car', 'bus','tanker', 'person','minitruck','minibus','truckbig','trucksmall','tricycle','bicycle'
+    ]
+    ds.classes = {i: name for i, name in enumerate(classes)}
+    return ds
