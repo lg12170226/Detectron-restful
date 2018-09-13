@@ -29,9 +29,15 @@ mm = Model(cfg_path,weights_path)
 
 @app.route('/user', methods=['POST'])
 def info():
-    #app.logger.warning('A warning occurred (%d apples)', 42)
-    #app.logger.error('An error occurred')                     #private log
-    #logging.info('Info')                                      #root log
+    # logger add
+    formatter = logging.Formatter("[%(asctime)s] {%(pathname)s - %(module)s - %(funcName)s:%(lineno)d} - %(message)s")
+    handler = RotatingFileHandler('./log/oilsteal.log', maxBytes=2000000, backupCount=10)
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    ip = request.remote_addr
+    info_str = 'IP:' + ip
+    logger.info(info_str)
     
     
     #imagepath = request.form.getlist('data')
@@ -51,6 +57,8 @@ def info():
         logger.warning('post has not data or data-key!!!')
         end_time = time.time() - start_time
         logger.info('predict time:{}'.format(end_time))
+        logger.removeHandler(handler)
+        handler.close()
         return json.dumps(out_json)
     if (imagepath.startswith("https://") or imagepath.startswith("http://") or imagepath.startswith("file://")):
         imagefile = urllib.urlopen(imagepath)
@@ -69,11 +77,15 @@ def info():
                 logger.warning('the images is NONE!!!')
                 end_time = time.time() - start_time
                 logger.info('predict time:{}'.format(end_time))
+                logger.removeHandler(handler)
+                handler.close()
                 return json.dumps(out_json)
         else:
             logger.warning('the image is not download on internet!!!')
             end_time = time.time() - start_time
             logger.info('predict time:{}'.format(end_time))
+            logger.removeHandler(handler)
+            handler.close()
             return json.dumps(out_json)
     # path 
     else:
@@ -81,6 +93,8 @@ def info():
             logger.warning('the image is not exists!!!')
             end_time = time.time() - start_time
             logger.info('predict time:{}'.format(end_time))
+            logger.removeHandler(handler)
+            handler.close()
             return json.dumps(out_json)
         else:
             #img_np = misc.imread(imagepath)
@@ -92,6 +106,9 @@ def info():
                 logger.warning('the images is NONE!!!')
                 end_time = time.time() - start_time
                 logger.info('predict time:{}'.format(end_time))
+                
+                logger.removeHandler(handler)
+                handler.close()
                 return json.dumps(out_json)
     start_model_time = time.time()
     predict_datalist = mm.predict(img_np)
@@ -111,6 +128,8 @@ def info():
         logger.warning('the images has not right bbox!!!')
     end_time = time.time() - start_time
     logger.info('predict time:{}'.format(end_time))
+    logger.removeHandler(handler)
+    handler.close()
     return json.dumps(out_json)
     
     
@@ -121,13 +140,14 @@ if __name__ == '__main__':
     
     logger = logging.getLogger('')    #set root level , default is WRAINING
     logger.setLevel(logging.DEBUG)
-    
+    '''
     formatter = logging.Formatter(
         "[%(asctime)s] {%(pathname)s - %(module)s - %(funcName)s:%(lineno)d} - %(message)s")
     handler = RotatingFileHandler('./log/oilsteal.log', maxBytes=10000000, backupCount=10)
     handler.setFormatter(formatter)
     logger.addHandler(handler)     #ok  start root log
     #app.logger.addHandler(handler)  #ok  start private log
+    '''
     app.run(host="0.0.0.0",port=8080,debug=False)   #threaded=True
 
     
