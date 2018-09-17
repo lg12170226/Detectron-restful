@@ -138,7 +138,7 @@ if __name__ == '__main__':
     if not os.path.exists('./log'):
         os.makedirs('./log')
     
-    logger = logging.getLogger('')    #set root level , default is WRAINING
+    logger = logging.getLogger('oilsteal')    #set root level , default is WRAINING
     logger.setLevel(logging.DEBUG)
     '''
     formatter = logging.Formatter(
