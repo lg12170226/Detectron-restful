@@ -1,16 +1,12 @@
 #coding=utf-8
 import logging
 from logging.handlers import RotatingFileHandler
-
 from flask import Flask
 from model import Model
 from flask import request,Response
 from scipy import misc
-
 import json
 import urllib,urllib2
-
-
 import cv2
 import os
 import time
@@ -20,16 +16,10 @@ from model import Model
 app = Flask(__name__)
 
 
-
-cfg_path = './model/retinanet.yaml'
-weights_path = './model/model.pkl'
-mm = Model(cfg_path,weights_path)
-
-    
-
 @app.route('/user', methods=['POST'])
 def info():
     # logger add
+    
     formatter = logging.Formatter("[%(asctime)s] {%(pathname)s - %(module)s - %(funcName)s:%(lineno)d} - %(message)s")
     handler = RotatingFileHandler('./log/oilsteal.log', maxBytes=2000000, backupCount=10)
     handler.setFormatter(formatter)
@@ -38,8 +28,8 @@ def info():
     ip = request.remote_addr
     info_str = 'IP:' + ip
     logger.info(info_str)
-    
-    
+    info_str = 'model_path:' + cfg_path + '-' + weights_path
+    logger.info(info_str)
     #imagepath = request.form.getlist('data')
     #imagepath = request.form.get("data",type=str,default=None)
     start_time = time.time()
@@ -140,6 +130,7 @@ if __name__ == '__main__':
     
     logger = logging.getLogger('oilsteal')    #set root level , default is WRAINING
     logger.setLevel(logging.DEBUG)
+    
     '''
     formatter = logging.Formatter(
         "[%(asctime)s] {%(pathname)s - %(module)s - %(funcName)s:%(lineno)d} - %(message)s")
@@ -148,6 +139,14 @@ if __name__ == '__main__':
     logger.addHandler(handler)     #ok  start root log
     #app.logger.addHandler(handler)  #ok  start private log
     '''
+    
+    cfg_path = '/opt/oilstealing_model/retinanet.yaml'
+    weights_path = '/opt/oilstealing_model/model.pkl'
+    if not os.path.exists(cfg_path) or not os.path.exists(weights_path):
+        cfg_path = './model/retinanet.yaml'
+        weights_path = './model/model.pkl'
+    mm = Model(cfg_path,weights_path)
+
     app.run(host="0.0.0.0",port=8080,debug=False)   #threaded=True
 
     
